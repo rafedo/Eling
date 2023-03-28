@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('kategori');
             $table->string('link');
+            $table->int('id_kategori');
             $table->timestamps();
         });
     }
