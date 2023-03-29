@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use Exception;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -12,17 +13,20 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $articles = Artikel::all();
+        
 
-        if (!$articles) {
+        try {
+            $articles = Artikel::all();
+
             return response()->json([
-                'message' => 'not found',
-            ], 404);
-        }
+                'data' => $articles,
+            ], 200);
+        } catch ( Exception $e ) {
 
-        return response()->json([
-            'data' => $articles,
-        ], 200);
+            return response()->json([
+                'message' => $e,
+            ], 404);
+    }
     }
 
     /**

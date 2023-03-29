@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('artikel', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('kategori');
+            $table->integer('id_kategori');
             $table->string('link');
-            $table->int('id_kategori');
             $table->timestamps();
         });
     }

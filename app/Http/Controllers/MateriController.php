@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materi;
+use Exception;
 use Illuminate\Http\Request;
 
 class MateriController extends Controller
@@ -12,17 +13,20 @@ class MateriController extends Controller
      */
     public function index()
     {
-        $material = Materi::all();
+        
 
-        if (!$material) {
+        try {
+            $material = Materi::all();
+
             return response()->json([
-                'message' => 'not found',
+                'data' => $material,
+            ], 200);
+        } catch ( Exception $e ) {
+
+            return response()->json([
+                'message' => $e,
             ], 404);
         }
-
-        return response()->json([
-            'data' => $material,
-        ], 200);
     }
 
     /**
