@@ -11,4 +11,10 @@ class Materi extends Model
 
     protected $table = 'materi';
     protected $guarded =[];
+
+    //Relasi antara tabel materi dan kategori
+    public function id_kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

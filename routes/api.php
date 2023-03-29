@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\KategoriApiController;
+use App\Http\Controllers\ArtikelApiController;
+use App\Http\Controllers\MateriApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('kategori', KategoriApiController::class);  //Mengatur api kategori
+Route::apiResource('artikel', ArtikelApiController::class);    //Mengatur api artikel
+Route::apiResource('materi', MateriApiController::class);      //Mengatur api materi
