@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('materi', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->integer('kategory');
             $table->string('link');
             $table->integer('id_kategori');
             $table->timestamps();

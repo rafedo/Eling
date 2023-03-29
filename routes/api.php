@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::apiResource('kategori', KategoriApiController::class);  //Mengatur api kategori
 Route::apiResource('artikel', ArtikelApiController::class);    //Mengatur api artikel
 Route::apiResource('materi', MateriApiController::class);      //Mengatur api materi
