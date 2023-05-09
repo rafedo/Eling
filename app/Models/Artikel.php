@@ -10,10 +10,18 @@ class Artikel extends Model
     use HasFactory;
 
     protected $table = 'artikel';
-    protected $guarded =['id',];
+
+    protected $guarded =['id'];
     protected $fillable = [
         'name',
-        'kategori',
+        'id_kategori',
         'link',       
     ];
+    
+    public function id_kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+
 }
