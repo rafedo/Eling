@@ -9,6 +9,6 @@ class Pengepul extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengepul';
+    protected $table = 'pengepuls';
     protected $guarded =[];
 }
