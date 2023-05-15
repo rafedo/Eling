@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('pengepuls', function (Blueprint $table) {
             $table->id();
+            $table->string('kategori');
             $table->string('nama');
-            $table->string('tlp');
             $table->string('alamat');
+            $table->string('ketersedian');
+            $table->string('kontak');
+            $table->string('maps');
             $table->timestamps();
         });
     }

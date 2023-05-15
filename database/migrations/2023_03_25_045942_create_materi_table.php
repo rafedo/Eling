@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->unsignedBigInteger('id_kategory');
             $table->string('link');
+            $table->string('sumber');
             $table->timestamps();
 
             $table->foreign('id_kategory')->references('id')->on('kategori')->onDelete('cascade');
