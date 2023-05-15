@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('artikel', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('id_kategori');
+            $table->unsignedBigInteger('id_kategori');
             $table->string('link');
             $table->timestamps();
+
+            $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade');
         });
     }
 
@@ -25,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('artikel', function (Blueprint $table) {
+            $table->dropForeign(['id_kategori']);
+        });
         Schema::dropIfExists('artikel');
     }
 };

@@ -1,77 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eling | Dashboard</title>
+    <link rel="icon" href="./images/title_favicon.png" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="people-outline"></ion-icon>
+              </span>
+              <span class="title">
+                <h2>E-Ling</h2>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              </span>
+              <span class="title">Kategori</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="card-outline"></ion-icon>
+              </span>
+              <span class="title">Materi Video</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="cart-outline"></ion-icon>
+              </span>
+              <span class="title">Artikel</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              </span>
+              <span class="title">Pengepul</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eling | Dashboard</title>
-  <link rel="icon" href="./images/title_favicon.png" />
-  <link rel="stylesheet" href="css/dashboard.css" />
-</head>
-
-<body>
-  <div class="container">
-    <div class="navigation">
-      <ul>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="people-outline"></ion-icon>
-            </span>
-            <span class="title">
-              <h2>E-Ling</h2>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="home-outline"></ion-icon>
-            </span>
-            <span class="title">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-            </span>
-            <span class="title">Kategori</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="card-outline"></ion-icon>
-            </span>
-            <span class="title">Materi Video</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="cart-outline"></ion-icon>
-            </span>
-            <span class="title">Artikel</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="icon">
-              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-            </span>
-            <span class="title">Pengepul</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- main -->
-    <div class="main">
-      <div class="topbar">
-        <div class="toggle">
-          <ion-icon name="menu-outline"></ion-icon>
+      <!-- main -->
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+            <?php
+              $url = "http://127.0.0.1:8000/api/kategori";
+              $data = file_get_contents($url);
+              $data = json_decode($data, true);
+              
+              echo "<table>";
+              echo "<thead><tr><th>ID</th><th>Jenis Kategori</th></tr></thead>";
+              echo "<tbody>";
+              foreach($data['data'] as $kategori) {
+                  echo "<tr><td>" . $kategori['id'] . "</td><td>" . $kategori['jenis_kategori'] . "</td></tr>";
+              }
+              echo "</tbody></table>";
+          ?>
         </div>
       </div>
 
