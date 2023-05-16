@@ -9,16 +9,13 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $table = 'kategori';
-    protected $guarded =[];
+    protected $guarded =['id', 'created_at', 'uploaded_at'];
+    protected $fillable = [
+        'jenis_kategori'
+    ];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 
-    //Relasi antara tabel materi dan kategori
-    public function artikel()
-    {
-        return $this->hasMany(Artikel::class);
-    }
-
-    public function materi()
-    {
-        return $this->hasMany(Materi::class);
-    }
 }

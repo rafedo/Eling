@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pengepul;
 use Illuminate\Http\Request;
 
-class PengepulController extends Controller
+class PengepulApiController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
@@ -33,8 +33,8 @@ class PengepulController extends Controller
     {
         $pengepul = Pengepul::create([
             'nama' => $request->nama,
-            'link' => $request->link,
-            'id_kategori' => $request->id_kategori
+            'tlp' => $request->tlp,
+            'alamat' => $request->alamat
         ]);
         return response()->json([
             'data' => $pengepul
@@ -65,8 +65,8 @@ class PengepulController extends Controller
     public function update(Request $request, Pengepul $pengepul)
     {
         $pengepul -> nama = $request->nama;
-        $pengepul -> link = $request->link;
-        $pengepul -> id_kategori = $request->id_kategori;
+        $pengepul -> tlp = $request->tlp;
+        $pengepul -> alamat = $request->alamat;
         $pengepul -> save();
 
         return response()->json([

@@ -10,10 +10,21 @@ class Artikel extends Model
     use HasFactory;
 
     protected $table = 'artikel';
-    protected $guarded =['id',];
+    protected $guarded =['id', 'created_at', 'uploaded_at'];
     protected $fillable = [
-        'name',
-        'kategori',
+        'nama',
+        'id_kategori',
         'link',       
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    //Relasi antar tabel artikel dan kategori
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'id_kategori');
+    }
 }
+

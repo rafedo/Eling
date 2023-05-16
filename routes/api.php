@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\KategoriApiController;
 use App\Http\Controllers\ArtikelApiController;
 use App\Http\Controllers\MateriApiController;
+use App\Http\Controllers\PengepulApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

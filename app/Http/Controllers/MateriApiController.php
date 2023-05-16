@@ -12,7 +12,7 @@ class MateriApiController extends Controller
      */
     public function index()
     {
-        $materi = Materi::all();
+        $materi = Materi::with('kategori')->get();
         return response()->json([
             'data' => $materi
         ]);
@@ -36,6 +36,9 @@ class MateriApiController extends Controller
             'link' => $request->link,
             'id_kategori' => $request->id_kategori
         ]);
+
+        $materi->load('kategori');
+
         return response()->json([
             'data' => $materi
         ]);
@@ -69,6 +72,8 @@ class MateriApiController extends Controller
         $materi -> id_kategori = $request->id_kategori;
         $materi -> save();
 
+        $materi->load('kategori');
+        
         return response()->json([
             'data' => $materi
         ]);

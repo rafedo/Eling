@@ -12,7 +12,7 @@ class ArtikelApiController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::with('kategori')->get();
         return response()->json([
             'data' => $artikel
         ]);
@@ -36,6 +36,9 @@ class ArtikelApiController extends Controller
             'link' => $request->link,
             'id_kategori' => $request->id_kategori
         ]);
+
+        $artikel->load('kategori');
+
         return response()->json([
             'data' => $artikel
         ]);
@@ -69,6 +72,8 @@ class ArtikelApiController extends Controller
         $artikel -> id_kategori = $request->id_kategori;
         $artikel -> save();
 
+        $artikel->load('kategori');
+        
         return response()->json([
             'data' => $artikel
         ]);
