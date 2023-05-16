@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengepuls', function (Blueprint $table) {
+        Schema::create('galeris', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');
-            $table->string('nama');
-            $table->string('alamat');
-            $table->string('ketersedian');
-            $table->string('kontak');
-            $table->string('maps');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengepuls');
+        Schema::dropIfExists('galeris');
     }
 };

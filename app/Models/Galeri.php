@@ -5,24 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengepul extends Model
+class Galeri extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengepuls';
+    protected $table = 'galeris';
     protected $guarded =['id'];
     protected $fillable = [
-        'kategori',
-        'nama',
-        'alamat',
-        'ketersedian',
-        'kontak',
-        'id_galeri',
-        'maps',
+        'foto'
     ];
 
     public function id_galeri()
     {
-        return $this->hasOne(Galeri::class);
+        return $this->belongsTo(pengepul::class);
     }
 }

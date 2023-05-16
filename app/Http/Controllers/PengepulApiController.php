@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengepul;
 use Illuminate\Http\Request;
 
-class PengepulController extends Controller
+class PengepulApiController extends Controller
 {
     /**
      * Display a listing of the resource.
