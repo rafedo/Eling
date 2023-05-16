@@ -1,4 +1,4 @@
-@include('templates.landing-page.header');
+@include('templates.landing-page.header')
 <body>
 
     <div class="overlay"></div>
@@ -110,4 +110,4 @@
         </section>
         <!-- End Contact -->
 
-@include('templates.landing-page.footer');
+@include('templates.landing-page.footer')

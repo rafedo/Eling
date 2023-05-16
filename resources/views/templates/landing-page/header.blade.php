@@ -12,8 +12,8 @@
     crossorigin="anonymous">
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="/css/landing-page.css">
+    <link rel="stylesheet" href="/css/landing-page/main.css">
 
     {{-- JS --}}
-    <script src="/js/app.js"></script>
+    <script src="/js/landing-page/main.js"></script>
 </head>
