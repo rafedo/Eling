@@ -23,7 +23,7 @@ use App\Http\Controllers\LandingpageController;
 Route::get('/', [LandingpageController::class, 'index']);
 
 // Login
-Route::get('/login', [LoginController::class, 'index']);
+// Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 

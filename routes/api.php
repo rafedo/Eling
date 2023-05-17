@@ -29,4 +29,4 @@ Route::post('login', [AuthController::class, 'login']);
 Route::apiResource('kategori', KategoriApiController::class);  //Mengatur api kategori
 Route::apiResource('artikel', ArtikelApiController::class);    //Mengatur api artikel
 Route::apiResource('materi', MateriApiController::class);      //Mengatur api materi
-Route::apiResource('pengepul', PengepulApiController::class);      //Mengatur api pengepul
+// Route::apiResource('pengepul', PengepulApiController::class);      //Mengatur api pengepul

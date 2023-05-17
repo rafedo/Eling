@@ -7,12 +7,17 @@
         </div>
 
         <div class="content-ubah">
-            <form action="/dashboard/kategori/{{ $kategori->id }}" method="post">
+            <form action="/dashboard/kategori/{{ $kategori->id }}" method="post" enctype="multipart/form-data">
+                @method('put')
+                @csrf
                 <div class="form">
                     <input type="text" class="form__input" id="jenis_kategori" name="jenis_kategori"
-                        value="{{ old('jenis_kategori') }}" required autofocus>
+                        value="{{ old('jenis_kategori', $kategori->jenis_kategori) }}" required autofocus>
                     <label for="jenis_kategori" class="form__label"><span class="content-label">
                             Jenis Kategori</span></label>
+                    @error('jenis_kategori')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Update Kategori</button>
             </form>

@@ -10,10 +10,5 @@ class Materi extends Model
     use HasFactory;
 
     protected $table = 'materi';
-    protected $guarded =['id',];
-    protected $fillable = [
-        'name',
-        'kategori',
-        'link',       
-    ];
+    protected $guarded =['id'];
 }

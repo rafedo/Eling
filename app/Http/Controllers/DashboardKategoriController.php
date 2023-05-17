@@ -44,17 +44,9 @@ class DashboardKategoriController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(kategori $kategori)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(kategori $kategori)
+    public function edit(Kategori $kategori)
     {
         return view('dashboard.kategori.edit', [
             'kategori' => $kategori
@@ -64,16 +56,26 @@ class DashboardKategoriController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, kategori $kategori)
+    public function update(Request $request, Kategori $kategori)
     {
-        //
+        $rules = [
+            'jenis_kategori' => 'required|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Kategori::where('id', $kategori->id)->update($validatedData);
+
+        return redirect('/dashboard/kategori')->with('berhasil', 'salah satu data telah diupdate! ');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(kategori $kategori)
+    public function destroy(Kategori $kategori)
     {
-        //
+        Kategori::destroy($kategori->id);
+
+        return redirect('/dashboard/kategori')->with('berhasil', 'salah satu data telah dihapus! ');
     }
 }

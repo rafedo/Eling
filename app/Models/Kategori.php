@@ -9,7 +9,7 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $table = 'kategori';
-    protected $guarded =[];
+    protected $guarded =['id'];
 
     //Relasi antara tabel materi dan kategori
     public function artikel()
