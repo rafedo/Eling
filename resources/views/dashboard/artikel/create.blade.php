@@ -20,12 +20,12 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input @error('id_kategory') is-invalid @enderror"
-                        id="id_kategory" name="id_kategory" value="{{ old('id_kategory') }}" required
+                    <input type="text" class="form__input @error('id_kategori') is-invalid @enderror"
+                        id="id_kategori" name="id_kategori" value="{{ old('id_kategori') }}" required
                         autofocus>
-                    <label for="id_kategory" class="form__label"><span class="content-label">
+                    <label for="id_kategori" class="form__label"><span class="content-label">
                             ID Kategori</span></label>
-                    @error('id_kategory')
+                    @error('id_kategori')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>

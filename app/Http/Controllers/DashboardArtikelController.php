@@ -38,16 +38,8 @@ class DashboardArtikelController extends Controller
 
         Artikel::create($validatedData);
 
-        return redirect('/dashboard/materivideo')->with('berhasil', 'menambahkan data artikel baru!');
-    
-    }
+        return redirect('/dashboard/artikel')->with('berhasil', 'menambahkan data artikel baru!');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Artikel $artikel)
-    {
-        //
     }
 
     /**
@@ -55,7 +47,9 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        //
+        return view('dashboard.artikel.edit', [
+            'artikel' => $artikel
+        ]);
     }
 
     /**
@@ -63,7 +57,17 @@ class DashboardArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
-        //
+        $rules = [
+            'nama' => 'required|max:255',
+            'id_kategori' => 'required|max:255',
+            'link' => 'required|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Artikel::where('id', $artikel->id)->update($validatedData);
+
+        return redirect('/dashboard/artikel')->with('berhasil', 'salah satu data telah diupdate! ');
     }
 
     /**
@@ -71,6 +75,8 @@ class DashboardArtikelController extends Controller
      */
     public function destroy(Artikel $artikel)
     {
-        //
+        Artikel::destroy($artikel->id);
+
+        return redirect('/dashboard/artikel')->with('berhasil', 'salah satu data telah dihapus! ');
     }
 }

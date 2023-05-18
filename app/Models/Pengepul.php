@@ -10,5 +10,5 @@ class Pengepul extends Model
     use HasFactory;
 
     protected $table = 'pengepuls';
-    protected $guarded =[];
+    protected $guarded =['id'];
 }

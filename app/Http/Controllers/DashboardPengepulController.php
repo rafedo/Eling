@@ -22,7 +22,7 @@ class DashboardPengepulController extends Controller
      */
     public function create()
     {
-        // return view('dashboard.pengepul.create');
+        return view('dashboard.pengepul.create');
     }
 
     /**
@@ -30,15 +30,15 @@ class DashboardPengepulController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'nama' => 'required|max:255',
-        //     'telp' => 'required|max:255',
-        //     'alamat' => 'required|max:255',
-        // ]);
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'tlp' => 'required|max:255',
+            'alamat' => 'required|max:255',
+        ]);
 
-        // Pengepul::create($validatedData);
+        Pengepul::create($validatedData);
 
-        // return redirect('/dashboard/pengepul')->with('berhasil', 'menambahkan data pengepul baru!');
+        return redirect('/dashboard/pengepul')->with('berhasil', 'menambahkan data pengepul baru!');
     }
 
     /**
@@ -54,7 +54,9 @@ class DashboardPengepulController extends Controller
      */
     public function edit(Pengepul $pengepul)
     {
-        //
+        return view('dashboard.pengepul.edit', [
+            'pengepul' => $pengepul
+        ]);
     }
 
     /**
@@ -62,7 +64,18 @@ class DashboardPengepulController extends Controller
      */
     public function update(Request $request, Pengepul $pengepul)
     {
-        //
+        $rules = [
+            'nama' => 'required|max:255',
+            'tlp' => 'required|max:255',
+            'alamat' => 'required|max:255',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Pengepul::where('id', $pengepul->id)->update($validatedData);
+
+        return redirect('/dashboard/pengepul')->with('berhasil', 'salah satu data telah diupdate! ');
+
     }
 
     /**
@@ -70,6 +83,9 @@ class DashboardPengepulController extends Controller
      */
     public function destroy(Pengepul $pengepul)
     {
-        //
+        Pengepul::destroy($pengepul->id);
+
+        return redirect('/dashboard/pengepul')->with('berhasil', 'salah satu data telah dihapus! ');
+
     }
 }

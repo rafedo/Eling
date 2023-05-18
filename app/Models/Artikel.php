@@ -10,10 +10,5 @@ class Artikel extends Model
     use HasFactory;
 
     protected $table = 'artikel';
-    protected $guarded =['id',];
-    protected $fillable = [
-        'name',
-        'kategori',
-        'link',       
-    ];
+    protected $guarded =['id'];
 }
