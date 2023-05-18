@@ -46,17 +46,17 @@ class DashboardMateriVideoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Materi $materi)
+    public function edit(Materi $materivideo)
     {
         return view('dashboard.materivideo.edit', [
-            'materivideo' => $materi
+            'materivideo' => $materivideo
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Materi $materi)
+    public function update(Request $request, Materi $materivideo)
     {
         $rules = [
             'nama' => 'required|max:255',
@@ -66,7 +66,7 @@ class DashboardMateriVideoController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        Materi::where('id', $materi->id)->update($validatedData);
+        Materi::where('id', $materivideo->id)->update($validatedData);
 
         return redirect('/dashboard/materivideo')->with('berhasil', 'salah satu data telah diupdate! ');
     }
@@ -74,9 +74,9 @@ class DashboardMateriVideoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materi $materi)
+    public function destroy(Materi $materivideo)
     {
-        Materi::destroy($materi->id);
+        Materi::destroy($materivideo->id);
 
         return redirect('/dashboard/materivideo')->with('berhasil', 'salah satu data telah dihapus! ');
     }
