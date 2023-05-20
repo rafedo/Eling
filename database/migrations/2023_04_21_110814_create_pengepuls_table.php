@@ -1,3 +1,4 @@
+<!-- STATUS AMAN -->
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,10 +15,15 @@ return new class extends Migration
         Schema::create('pengepul', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('judul');
+            $table->string('deskripsi_singkat');
             $table->string('alamat');
-            $table->string('ketersedian');
+            $table->string('ketersedian_hari');
+            $table->string('ketersediaan_jam');
             $table->string('kontak');
-            $table->string('foto');
+            $table->string('foto_1');
+            $table->string('foto_2');
+            $table->string('foto_3');
             $table->string('maps');
             $table->timestamps();
         });

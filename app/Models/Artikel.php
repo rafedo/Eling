@@ -14,7 +14,8 @@ class Artikel extends Model
     protected $fillable = [
         'nama',
         'id_kategori',
-        'link',       
+        'link',
+        'foto',       
     ];
     protected $hidden = [
         'created_at',

@@ -1,3 +1,5 @@
+<!-- Materi akan dibagi 2 yaitu materi dan isi materi
+STATUS BELUM FIX -->
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,12 +16,15 @@ return new class extends Migration
         Schema::create('materi', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->unsignedBigInteger('id_kategori');
-            $table->string('link');
-            $table->string('sumber');
+            $table->string('judul');
+            $table->string('deskripsi_singkat');
+            $table->string('deskripsi_panjang');
+            $table->string('foto');
             $table->timestamps();
 
-            // relasi untuk didalam databasenya(mysql)
+            $table->unsignedBigInteger('id_kategori');
+
+            // relasi dari tabel kategori, setelan untuk database (mysql)
             $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade');
         });
     }

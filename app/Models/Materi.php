@@ -14,7 +14,8 @@ class Materi extends Model
     protected $fillable = [
         'nama',
         'id_kategori',  
-        'link',       
+        'link',  
+        'sumber',     
     ];
     protected $hidden = [
         'created_at',
