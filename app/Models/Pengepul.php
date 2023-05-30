@@ -20,7 +20,6 @@ class Pengepul extends Model
         'ketersediaan_jam',
         'kontak',
         'maps',
-        'id_galeri',
     ];
 
     protected $hidden = [

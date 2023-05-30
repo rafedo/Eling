@@ -40,12 +40,22 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input @error('ketersedian') is-invalid @enderror"
-                        id="ketersedian" name="ketersedian" value="{{ old('ketersedian') }}" required
+                    <input type="text" class="form__input @error('ketersediaan_hari') is-invalid @enderror"
+                        id="ketersediaan_hari" name="ketersediaan_hari" value="{{ old('ketersediaan_hari') }}" required
                         autofocus>
-                    <label for="ketersedian" class="form__label"><span class="content-label">
-                            Ketersediaan</span></label>
-                    @error('ketersedian')
+                    <label for="ketersediaan_hari" class="form__label"><span class="content-label">
+                            Ketersediaaan</span></label>
+                    @error('ketersediaan_hari')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="form">
+                    <input type="text" class="form__input @error('ketersediaan_jam') is-invalid @enderror"
+                        id="ketersediaan_jam" name="ketersediaan_jam" value="{{ old('ketersediaan_jam') }}" required
+                        autofocus>
+                    <label for="ketersediaan_jam" class="form__label"><span class="content-label">
+                            Ketersediaaan</span></label>
+                    @error('ketersediaan_jam')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
@@ -56,16 +66,6 @@
                     <label for="kontak" class="form__label"><span class="content-label">
                             Kontak</span></label>
                     @error('kontak')
-                        <p>{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form">
-                    <input type="text" class="form__input @error('id_galeri') is-invalid @enderror"
-                        id="id_galeri" name="id_galeri" value="{{ old('id_galeri') }}" required
-                        autofocus>
-                    <label for="id_galeri" class="form__label"><span class="content-label">
-                            ID Galeri</span></label>
-                    @error('id_galeri')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>

@@ -7,10 +7,10 @@
         </div>
 
         <div class="content-tambah">
-            <form action="/dashboard/galeri" method="post">
+            <form action="/dashboard/galeri/store/{{ $id }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="form">
-                    <input type="text" class="form__input @error('foto') is-invalid @enderror" id="foto" name="foto"
+                <div class="">
+                    <input type="file" class="form__input @error('foto') is-invalid @enderror" accept="image/*" id="foto" name="foto"
                         value="{{ old('foto') }}" required autofocus>
                     <label for="foto" class="form__label"><span class="content-label">
                             Foto</span></label>

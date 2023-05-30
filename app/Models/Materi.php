@@ -24,9 +24,9 @@ class Materi extends Model
         'updated_at'
     ];
 
-    //Relasi antar tabel artikel dan kategori
+    // Relasi antar tabel artikel dan kategori
     public function kategori()
     {
-        return $this->belongsTo(kategori::class, 'id_kategori');
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 }

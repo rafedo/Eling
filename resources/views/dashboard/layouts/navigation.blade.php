@@ -39,14 +39,14 @@
                 <span class="title">Artikel</span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="/dashboard/galeri">
                 <span class="icon">
                     <ion-icon name="images-outline"></ion-icon>
                 </span>
                 <span class="title">Galeri</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="/dashboard/pengepul">
                 <span class="icon">

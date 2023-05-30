@@ -20,7 +20,6 @@
                 <th>Alamat</th>
                 <th>Ketersediaan</th>
                 <th>Kontak</th>
-                <th>ID Galeri</th>
                 <th>Maps</th>
                 <th>Aksi</th>
             </tr>
@@ -32,12 +31,12 @@
                     <td>{{ $pengepul->kategori }}</td>
                     <td>{{ $pengepul->nama }}</td>
                     <td>{{ $pengepul->alamat }}</td>
-                    <td>{{ $pengepul->ketersediaan }}</td>
+                    <td>hari: {{ $pengepul->ketersediaan_hari }} &nbsp; jam: {{ $pengepul->ketersediaan_jam }}</td>
                     <td>{{ $pengepul->kontak }}</td>
-                    <td>{{ $pengepul->id_galeri }}</td>
                     <td>{{ $pengepul->maps }}</td>
                     <td>
                         <button class="btn-info"><a href="/dashboard/pengepul/{{ $pengepul->id }}/edit">Ubah</a></button>
+                        <button class="btn-info"><a href="/dashboard/gallery/pengepul/{{ $pengepul->id }}">Gallery</a></button>
 
                         <form action="/dashboard/pengepul/{{ $pengepul->id }}" method="post" style="display:inline;">
                             @method('delete')

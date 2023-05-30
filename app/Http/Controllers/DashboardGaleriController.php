@@ -17,26 +17,43 @@ class DashboardGaleriController extends Controller
         ]);
     }
 
+    public function pengepul($id) {
+        $galleries = Galeri::where('pengepul_id', $id)->get();
+
+        return view('dashboard.galeri.show', compact(['galleries', 'id']));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('dashboard.galeri.create');
+        return view('dashboard.galeri.create', compact('id'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'foto' => 'required'
+        $request->validate([
+            'foto' => 'required|image'
         ]);
 
-        Galeri::create($validatedData);
+        $imageName = time().'.'.$request->foto->extension();  
 
-        return redirect('/dashboard/galeri')->with('berhasil', 'menambahkan data materi video baru!');
+        $request->foto->storeAs('public/images', $imageName);
+
+        $input = [
+            'pengepul_id' => $id,
+            'foto' => $imageName,
+        ];
+
+        // dd($input);
+
+        Galeri::create($input);
+
+        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'menambahkan data materi video baru!');
     }
 
     /**
@@ -63,14 +80,13 @@ class DashboardGaleriController extends Controller
     {
         $rules = [
             'foto' => 'required'
-
         ];
 
         $validatedData = $request->validate($rules);
 
         Galeri::where('id', $galeri->id)->update($validatedData);
 
-        return redirect('/dashboard/galeri')->with('berhasil', 'salah satu data telah diupdate! ');
+        return redirect('/dashboard/gallery/pengepul/'. $galeri->pengepul_id)->with('berhasil', 'salah satu data telah diupdate! ');
     }
 
     /**
@@ -78,8 +94,9 @@ class DashboardGaleriController extends Controller
      */
     public function destroy(Galeri $galeri)
     {
+        $id = $galeri->pengepul_id;
         Galeri::destroy($galeri->id);
 
-        return redirect('/dashboard/galeri')->with('berhasil', 'salah satu data telah dihapus! ');
+        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'salah satu data telah dihapus! ');
     }
 }

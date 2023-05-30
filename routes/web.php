@@ -21,17 +21,20 @@ use App\Http\Controllers\LandingpageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingpageController::class, 'index']);
 
 // Login
 // Route::get('/login', [LoginController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::prefix('dashboard')->group( function () {
+    Route::get('/', [DashboardController::class, 'index']);
 
-Route::resource('/dashboard/kategori', DashboardKategoriController::class);
-Route::resource('/dashboard/materivideo', DashboardMateriVideoController::class);
-Route::resource('/dashboard/artikel', DashboardArtikelController::class);
-Route::resource('/dashboard/galeri', DashboardGaleriController::class);
-Route::resource('/dashboard/pengepul', DashboardPengepulController::class);
+    Route::resource('/kategori', DashboardKategoriController::class);
+    Route::resource('/materivideo', DashboardMateriVideoController::class);
+    Route::resource('/artikel', DashboardArtikelController::class);
+    Route::resource('/galeri', DashboardGaleriController::class);
+    Route::get('/gallery/pengepul/{id}', [DashboardGaleriController::class, 'pengepul']);
+    Route::get('/galeri/create/{id}', [DashboardGaleriController::class, 'create']);
+    Route::post('/galeri/store/{id}', [DashboardGaleriController::class, 'store']);
+    Route::resource('/pengepul', DashboardPengepulController::class);
+});

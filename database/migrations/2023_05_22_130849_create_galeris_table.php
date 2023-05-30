@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('galeri', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pengepul_id');
             $table->string('foto');
             $table->timestamps();
+
+            $table->foreign('pengepul_id')->references('id')->on('pengepul');
         });
     }
 

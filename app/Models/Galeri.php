@@ -10,6 +10,7 @@ class Galeri extends Model
     use HasFactory;
 
     protected $table = 'galeri';
+    protected $fillable = ['foto', 'pengepul_id'];
 
     //Relasi antar tabel artikel dan kategori
     public function id_galeri()

@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('kontak');
             $table->string('maps');
             $table->timestamps();
-
-            $table->unsignedBigInteger('id_galeri');
-            // // relasi dari tabel galeri, setelan untuk database (mysql)
-            $table->foreign('id_galeri')->references('id')->on('galeri')->onUpdate('restrict')->onDelete('cascade');
         });
     }
 
@@ -33,9 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pengepul', function (Blueprint $table) {
-            $table->dropForeign(['id_galeri']);
-        });
         Schema::dropIfExists('pengepul');
     }
 };

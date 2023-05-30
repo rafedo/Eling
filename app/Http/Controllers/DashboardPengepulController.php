@@ -12,7 +12,7 @@ class DashboardPengepulController extends Controller
      */
     public function index()
     {
-            return view('dashboard.pengepul.index', [
+        return view('dashboard.pengepul.index', [
             'pengepuls' => Pengepul::all()
         ]);
     }
@@ -31,13 +31,13 @@ class DashboardPengepulController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'kategori' => 'required|max:255',
-            'nama' => 'required|max:255',
-            'alamat' => 'required|max:255',
-            'ketersedian' => 'required|max:255',
-            'kontak' => 'required|max:255',
-            'id_galeri' => 'required|max:255',
-            'maps' => 'required|max:255',
+            'kategori'          => 'required|max:255',
+            'nama'              => 'required|max:255',
+            'alamat'            => 'required|max:255',
+            'ketersediaan_hari' => 'required|max:255',
+            'ketersediaan_jam'  => 'required|max:255',
+            'kontak'            => 'required|max:255',
+            'maps'              => 'required|max:255',
         ]);
 
         Pengepul::create($validatedData);
