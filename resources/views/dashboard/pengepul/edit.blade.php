@@ -38,11 +38,20 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input" id="ketersedian" name="ketersedian"
-                        value="{{ old('ketersedian', $pengepul->ketersedian) }}" required autofocus>
-                    <label for="ketersedian" class="form__label"><span class="content-label">
-                            Ketersediaan</span></label>
-                    @error('ketersedian')
+                    <input type="text" class="form__input" id="ketersediaan_hari" name="ketersediaan_hari"
+                        value="{{ old('ketersediaan_hari', $pengepul->ketersediaan_hari) }}" required autofocus>
+                    <label for="ketersediaan_hari" class="form__label"><span class="content-label">
+                            Ketersediaan Hari</span></label>
+                    @error('ketersediaan Hari')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="form">
+                    <input type="text" class="form__input" id="ketersediaan_jam" name="ketersediaan_jam"
+                        value="{{ old('ketersediaan_jam', $pengepul->ketersediaan_jam) }}" required autofocus>
+                    <label for="ketersediaan_jam" class="form__label"><span class="content-label">
+                            Ketersediaan Jam</span></label>
+                    @error('ketersediaan_Jam')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
@@ -52,15 +61,6 @@
                     <label for="kontak" class="form__label"><span class="content-label">
                             Kontak</span></label>
                     @error('kontak')
-                        <p>{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form">
-                    <input type="text" class="form__input" id="id_galeri" name="id_galeri"
-                        value="{{ old('id_galeri', $pengepul->id_galeri) }}" required autofocus>
-                    <label for="id_galeri" class="form__label"><span class="content-label">
-                            ID Galeri</span></label>
-                    @error('id_galeri')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>

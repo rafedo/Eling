@@ -18,7 +18,8 @@
                 <th>Kategori</th>
                 <th>Nama</th>
                 <th>Alamat</th>
-                <th>Ketersediaan</th>
+                <th>Ketersediaan Hari</th>
+                <th>Ketersediaan Jam</th>
                 <th>Kontak</th>
                 <th>Maps</th>
                 <th>Aksi</th>
@@ -31,7 +32,9 @@
                     <td>{{ $pengepul->kategori }}</td>
                     <td>{{ $pengepul->nama }}</td>
                     <td>{{ $pengepul->alamat }}</td>
-                    <td>hari: {{ $pengepul->ketersediaan_hari }} &nbsp; jam: {{ $pengepul->ketersediaan_jam }}</td>
+                    {{-- <td>hari: {{ $pengepul->ketersediaan_hari }} &nbsp; jam: {{ $pengepul->ketersediaan_jam }}</td> --}}
+                    <td>{{ $pengepul->ketersediaan_hari }}</td>
+                    <td>{{ $pengepul->ketersediaan_jam }}</td>
                     <td>{{ $pengepul->kontak }}</td>
                     <td>{{ $pengepul->maps }}</td>
                     <td>

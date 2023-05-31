@@ -33,7 +33,7 @@ class DashboardArtikelController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'deskripsi_singkat' => 'required|max:255',
-            'deskripsi_panjang' => 'required|max:255',
+            'deskripsi_panjang' => 'required',
             'tanggal' => 'required|max:255',
             'link' => 'required|max:255',
             'sumber' => 'required|max:255',
