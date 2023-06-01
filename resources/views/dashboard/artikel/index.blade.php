@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $artikel->nama }}</td>
-                        <td>{{ $artikel->id_kategori }}</td>
+                        <td>{{ $artikel->kategori->jenis_kategori }}</td>
                         <td>{{ $artikel->deskripsi_singkat }}</td>
                         <td>{{ $artikel->deskripsi_panjang }}</td>
                         <td>{{ $artikel->tanggal }}</td>

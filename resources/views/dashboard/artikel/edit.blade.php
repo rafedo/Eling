@@ -19,11 +19,15 @@
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form">
-                    <input type="text" class="form__input" id="id_kategori" name="id_kategori"
-                        value="{{ old('id_kategori', $artikel->id_kategori) }}" required autofocus>
-                    <label for="id_kategori" class="form__label"><span class="content-label">
-                            ID Kategori</span></label>
+                <div class="">
+                    <select class="form__input @error('id_kategori') is-invalid @enderror" 
+                        name="id_kategori" id="id_kategori" value="{{ old('id_kategori') }}" required
+                        autofocus>
+                        <option value="{{ old('id_kategori', $artikel->id_kategori) }}">Pilih Kategori</option>
+                        @foreach ($kategori as $item)
+                            <option value="{{ $item->id }}">{{ $item->jenis_kategori }}</option>
+                        @endforeach
+                    </select>
                     @error('id_kategori')
                         <p>{{ $message }}</p>
                     @enderror

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -23,7 +24,10 @@ class DashboardArtikelController extends Controller
      */
     public function create()
     {
-        return view('dashboard.artikel.create');
+        $kategori = Kategori::all();
+        return view('dashboard.artikel.create', [
+            'kategori' => $kategori
+        ]);
     }
 
     /**
@@ -66,8 +70,10 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
+        $kategori = Kategori::all(); 
         return view('dashboard.artikel.edit', [
-            'artikel' => $artikel
+            'artikel' => $artikel,
+            'kategori' => $kategori
         ]);
     }
 

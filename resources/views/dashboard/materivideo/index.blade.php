@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $materivideo->nama }}</td>
-                    <td>{{ $materivideo->id_kategori }}</td>
+                    <td>{{ $materivideo->kategori->jenis_kategori }}</td>
                     <td>{{ $materivideo->deskripsi_panjang }}</td>
                     <td>
                         <img src="{{ asset('storage/materi/'. $materivideo->foto) }}" style="max-width: 200px">

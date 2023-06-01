@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DashboardMateriVideo;
 use App\Models\Materi;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 
@@ -24,7 +25,12 @@ class DashboardMateriVideoController extends Controller
      */
     public function create()
     {
-        return view('dashboard.materivideo.create');
+        // return view('dashboard.materivideo.create');
+
+        $kategori = Kategori::all();
+        return view('dashboard.materivideo.create', [
+            'kategori' => $kategori
+        ]);
     }
 
     /**
@@ -62,8 +68,10 @@ class DashboardMateriVideoController extends Controller
      */
     public function edit(Materi $materivideo)
     {
+        $kategori = Kategori::all(); 
         return view('dashboard.materivideo.edit', [
-            'materivideo' => $materivideo
+            'materivideo' => $materivideo,
+            'kategori' => $kategori
         ]);
     }
 
