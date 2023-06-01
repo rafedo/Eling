@@ -12,7 +12,7 @@ class PengepulApiController extends Controller
      */
     public function index()
     {
-        $pengepul = Pengepul::all();
+        $pengepul = Pengepul::with('galeri')->get();
         return response()->json([
             'data' => $pengepul
         ]);

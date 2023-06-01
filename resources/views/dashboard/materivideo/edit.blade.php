@@ -38,15 +38,6 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input" id="foto" name="foto"
-                        value="{{ old('foto', $materivideo->foto) }}" required autofocus>
-                    <label for="foto" class="form__label"><span class="content-label">
-                            Nama</span></label>
-                    @error('foto')
-                        <p>{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form">
                     <input type="text" class="form__input" id="link_video" name="link_video"
                         value="{{ old('link_video', $materivideo->link_video) }}" required autofocus>
                     <label for="link_video" class="form__label"><span class="content-label">
@@ -61,6 +52,15 @@
                     <label for="sumber" class="form__label"><span class="content-label">
                             Sumber</span></label>
                     @error('sumber')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="">
+                    <input type="file" class="form__input" accept="image/*" id="foto" name="foto"
+                        value="{{ old('foto', $materivideo->foto) }}" required autofocus>
+                    <label for="foto" class="form__label"><span class="content-label">
+                            Foto</span></label>
+                    @error('foto')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>

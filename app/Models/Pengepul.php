@@ -30,6 +30,6 @@ class Pengepul extends Model
     //Relasi antar tabel galeri dan pengepul
     public function galeri()
     {
-        return $this->belongsTo(kategori::class, 'id_galeri');
+        return $this->belongsTo(Galeri::class, 'id_galeri');
     }
 }

@@ -31,7 +31,9 @@
                     <td>{{ $materivideo->nama }}</td>
                     <td>{{ $materivideo->id_kategori }}</td>
                     <td>{{ $materivideo->deskripsi_panjang }}</td>
-                    <td>{{ $materivideo->foto }}</td>
+                    <td>
+                        <img src="{{ asset('storage/materi/'. $materivideo->foto) }}" style="max-width: 200px">
+                    </td>
                     <td>{{ $materivideo->link_video }}</td>
                     <td>{{ $materivideo->sumber }}</td>
                     <td>

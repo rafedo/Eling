@@ -18,8 +18,8 @@
                 <th>Kategori</th>
                 <th>Nama</th>
                 <th>Alamat</th>
-                <th>Ketersediaan Hari</th>
                 <th>Ketersediaan Jam</th>
+                <th>Ketersediaan Hari</th>
                 <th>Kontak</th>
                 <th>Maps</th>
                 <th>Aksi</th>

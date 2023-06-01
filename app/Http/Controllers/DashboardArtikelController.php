@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class DashboardArtikelController extends Controller
 {
@@ -30,18 +31,32 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|max:255',
             'deskripsi_singkat' => 'required|max:255',
             'deskripsi_panjang' => 'required',
             'tanggal' => 'required|max:255',
             'link' => 'required|max:255',
             'sumber' => 'required|max:255',
-            'foto' => 'required|max:255',
-            'id_kategori' => 'required|max:255',
+            'foto' => 'required|image',
+            'id_kategori' => 'required|max:255'
         ]);
 
-        Artikel::create($validatedData);
+        $imageName = time().'.'.$request->foto->extension();  
+        $request->foto->storeAs('public/artikel', $imageName);
+
+        $input = [
+            'nama' => $request->nama,
+            'deskripsi_singkat' => $request->deskripsi_singkat,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'tanggal' => $request->tanggal,
+            'link' => $request->link,
+            'sumber' => $request->sumber,
+            'foto' => $imageName,
+            'id_kategori' => $request->id_kategori
+        ];
+
+        Artikel::create($input);
 
         return redirect('/dashboard/artikel')->with('berhasil', 'menambahkan data artikel baru!');
     }
@@ -68,13 +83,26 @@ class DashboardArtikelController extends Controller
             'tanggal' => 'required|max:255',
             'link' => 'required|max:255',
             'sumber' => 'required|max:255',
-            'foto' => 'required|max:255',
+            'foto' => 'required|image',
             'id_kategori' => 'required|max:255',
         ];
 
-        $validatedData = $request->validate($rules);
+        $imageName = $request->validate($rules);
+        $imageName = time().'.'.$request->foto->extension();  
+        $request->foto->storeAs('public/artikel', $imageName);
 
-        Artikel::where('id', $artikel->id)->update($validatedData);
+        $input = [
+            'nama'    => $request->nama,
+            'deskripsi_singkat' => $request->deskripsi_singkat,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'tanggal'    => $request->tanggal,
+            'link'    => $request->link,
+            'sumber'    => $request->sumber,
+            'foto'              => $imageName,
+            'id_kategori'    => $request->id_kategori,
+        ];
+
+        Artikel::where('id', $artikel->id)->update($input);
 
         return redirect('/dashboard/artikel')->with('berhasil', 'salah satu data telah diupdate! ');
     }

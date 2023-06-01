@@ -29,7 +29,9 @@
                         <td>{{ $kategori->jenis_kategori }}</td>
                         <td>{{ $kategori->deskripsi_singkat }}</td>
                         <td>{{ $kategori->deskripsi_panjang }}</td>
-                        <td>{{ $kategori->foto }}</td>
+                        <td>
+                            <img src="{{ asset('storage/category/'. $kategori->foto) }}" style="max-width: 200px">
+                        </td>
                         <td>
                             <button class="btn-info"><a href="/dashboard/kategori/{{ $kategori->id }}/edit">Ubah</a></button>
 

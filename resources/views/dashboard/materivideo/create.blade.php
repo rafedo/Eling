@@ -7,7 +7,7 @@
         </div>
 
         <div class="content-tambah">
-            <form action="/dashboard/materivideo" method="post">
+            <form action="/dashboard/materivideo" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form">
                     <input type="text" class="form__input @error('nama') is-invalid @enderror"
@@ -40,16 +40,6 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input @error('foto') is-invalid @enderror"
-                        id="foto" name="foto" value="{{ old('foto') }}" required
-                        autofocus>
-                    <label for="foto" class="form__label"><span class="content-label">
-                            Foto</span></label>
-                    @error('nama')
-                        <p>{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form">
                     <input type="text" class="form__input @error('link_video') is-invalid @enderror"
                         id="link_video" name="link_video" value="{{ old('link_video') }}" required
                         autofocus>
@@ -66,6 +56,15 @@
                     <label for="sumber" class="form__label"><span class="content-label">
                             Sumber</span></label>
                     @error('sumber')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="">
+                    <input type="file" class="form__input @error('foto') is-invalid @enderror" accept="image/*" id="foto" name="foto"
+                        value="{{ old('foto') }}" required autofocus>
+                    <label for="foto" class="form__label"><span class="content-label">
+                            Foto</span></label>
+                    @error('foto')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>

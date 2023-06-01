@@ -12,7 +12,10 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        //
+        $galeri = Galeri::all();
+        return response()->json([
+            'data' => $galeri
+        ]);
     }
 
     /**

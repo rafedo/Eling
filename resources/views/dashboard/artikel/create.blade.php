@@ -7,7 +7,7 @@
         </div>
 
         <div class="content-tambah">
-            <form action="/dashboard/artikel" method="post">
+            <form action="/dashboard/artikel" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form">
                     <input type="text" class="form__input @error('nama') is-invalid @enderror"
@@ -79,10 +79,9 @@
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form">
-                    <input type="text" class="form__input @error('foto') is-invalid @enderror"
-                        id="foto" name="foto" value="{{ old('foto') }}" required
-                        autofocus>
+                <div class="">
+                    <input type="file" class="form__input @error('foto') is-invalid @enderror" accept="image/*" id="foto" name="foto"
+                        value="{{ old('foto') }}" required autofocus>
                     <label for="foto" class="form__label"><span class="content-label">
                             Foto</span></label>
                     @error('foto')

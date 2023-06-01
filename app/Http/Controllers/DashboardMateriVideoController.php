@@ -32,18 +32,29 @@ class DashboardMateriVideoController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'deskripsi_panjang' => 'required',
-            'id_kategori' => 'required|max:255',
-            'link_video' => 'required|max:255',
-            'sumber' => 'required',
-            'foto' => 'required'
-        ]);
+            $request->validate([
+                'nama' => 'required|max:255',
+                'deskripsi_panjang' => 'required',
+                'id_kategori' => 'required|max:255',
+                'link_video' => 'required|max:255',
+                'sumber' => 'required|max:255',
+                'foto' => 'required|image'
+            ]);
 
-        Materi::create($validatedData);
+            $imageName = time().'.'.$request->foto->extension();  
+            $request->foto->storeAs('public/materi', $imageName);
 
-        return redirect('/dashboard/materivideo')->with('berhasil', 'menambahkan data materi video baru!');
+            $input = [
+                'nama' => $request->nama,            
+                'deskripsi_panjang' => $request->deskripsi_panjang,
+                'id_kategori' => $request->id_kategori,
+                'link_video' => $request->link_video,
+                'sumber' => $request->sumber,
+                'foto' => $imageName
+            ];
+
+            Materi::create($input);
+            return redirect('/dashboard/materivideo')->with('berhasil', 'menambahkan data materi video baru!');
     }
 
     /**
@@ -66,13 +77,24 @@ class DashboardMateriVideoController extends Controller
             'deskripsi_panjang' => 'required',
             'id_kategori' => 'required|max:255',
             'link_video' => 'required|max:255',
-            'sumber' => 'required',
+            'sumber' => 'required|max:255',
             'foto' => 'required'
         ];
 
-        $validatedData = $request->validate($rules);
+        $imageName = $request->validate($rules);
+        $imageName = time().'.'.$request->foto->extension();  
+        $request->foto->storeAs('public/materi', $imageName);
 
-        Materi::where('id', $materivideo->id)->update($validatedData);
+        $input = [
+            'nama'    => $request->nama,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'link_video'    => $request->link_video,
+            'sumber'    => $request->sumber,
+            'foto'              => $imageName,
+            'id_kategori'    => $request->id_kategori,
+        ];
+
+        Materi::where('id', $materivideo->id)->update($input);
 
         return redirect('/dashboard/materivideo')->with('berhasil', 'salah satu data telah diupdate! ');
     }

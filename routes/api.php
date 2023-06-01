@@ -5,6 +5,7 @@ use App\Http\Controllers\KategoriApiController;
 use App\Http\Controllers\ArtikelApiController;
 use App\Http\Controllers\MateriApiController;
 use App\Http\Controllers\PengepulApiController;
+use App\Http\Controllers\GaleriController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,4 @@ Route::apiResource('kategori', KategoriApiController::class);  //Mengatur api ka
 Route::apiResource('artikel', ArtikelApiController::class);    //Mengatur api artikel
 Route::apiResource('materi', MateriApiController::class);      //Mengatur api materi
 Route::apiResource('pengepul', PengepulApiController::class);  //Mengatur api pengepul
+Route::apiResource('galeri', GaleriController::class);         //Mengatur api galer

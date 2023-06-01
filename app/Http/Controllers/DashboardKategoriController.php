@@ -34,14 +34,26 @@ class DashboardKategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        // dd($request);
+        $request->validate([
             'jenis_kategori' => 'required|max:255',
             'deskripsi_singkat' => 'required|max:255',
             'deskripsi_panjang' => 'required',
-            'foto' => 'required'
+            'foto' => 'required|image'
         ]);
 
-        Kategori::create($validatedData);
+        $imageName = time().'.'.$request->foto->extension();  
+
+        $request->foto->storeAs('public/category', $imageName);
+
+        $input = [
+            'jenis_kategori'    => $request->jenis_kategori,
+            'deskripsi_singkat' => $request->deskripsi_singkat,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'foto'              => $imageName
+        ];
+
+        Kategori::create($input);
 
         return redirect('/dashboard/kategori')->with('berhasil', 'menambahkan data materi video baru!');
     }
@@ -65,13 +77,23 @@ class DashboardKategoriController extends Controller
             'jenis_kategori' => 'required|max:255',
             'deskripsi_singkat' => 'required|max:255',
             'deskripsi_panjang' => 'required',
-            'foto' => 'required'
+            'foto' => 'required|image'
 
         ];
 
-        $validatedData = $request->validate($rules);
+        $imageName = $request->validate($rules);
+        $imageName = time().'.'.$request->foto->extension();  
+        $request->foto->storeAs('public/category', $imageName);
 
-        Kategori::where('id', $kategori->id)->update($validatedData);
+        $input = [
+            'jenis_kategori'    => $request->jenis_kategori,
+            'deskripsi_singkat' => $request->deskripsi_singkat,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'foto'              => $imageName
+        ];
+
+
+        Kategori::where('id', $kategori->id)->update($input);
 
         return redirect('/dashboard/kategori')->with('berhasil', 'salah satu data telah diupdate! ');
     }

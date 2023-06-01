@@ -75,7 +75,7 @@ class DashboardPengepulController extends Controller
             'ketersediaan_hari' => 'required|max:255',
             'ketersediaan_jam' => 'required|max:255',
             'kontak' => 'required|max:255',
-            'id_galeri' => 'required|max:255',
+            // 'id_galeri' => 'required|max:255',
             'maps' => 'required|max:255',
         ];
 

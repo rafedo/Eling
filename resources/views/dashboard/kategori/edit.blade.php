@@ -37,8 +37,8 @@
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form">
-                    <input type="text" class="form__input" id="foto" name="foto"
+                <div class="">
+                    <input type="file" class="form__input" accept="image/*" id="foto" name="foto"
                         value="{{ old('foto', $kategori->foto) }}" required autofocus>
                     <label for="foto" class="form__label"><span class="content-label">
                             Foto</span></label>
