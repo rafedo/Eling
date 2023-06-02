@@ -25,7 +25,7 @@
         @include('dashboard.layouts.navigation')
 
         <div class="main">
-            {{-- @include('dashboard.layouts.topbar') --}}
+            @include('dashboard.layouts.topbar')
             <hr>
             @yield('content')
         </div>

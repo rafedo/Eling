@@ -7,14 +7,14 @@
                 </span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="/dashboard">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
                 </span>
                 <span class="title">Dashboard</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="/dashboard/kategori">
                 <span class="icon">
