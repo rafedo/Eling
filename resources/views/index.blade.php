@@ -1,4 +1,5 @@
 @include('templates.landing-page.header')
+
 <body>
 
     <div class="overlay"></div>
@@ -23,9 +24,15 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
-                    <li class="nav-item btn">
-                        <a href="/login" class="nav-link btn btn-primary">Login</a>
-                    </li>
+                    @auth
+                        <li class="nav-item btn">
+                            <a href="/dashboard" class="nav-link btn btn-primary">Dashboard</a>
+                        </li>
+                    @else
+                        <li class="nav-item btn">
+                            <a href="/login" class="nav-link btn btn-primary">Login Admin</a>
+                        </li>
+                    @endauth
                 </ul>
                 <div class="toggle-bar"><i class="fas fa-fw fa-bars"></i>
                 </div>
@@ -56,7 +63,8 @@
             <div class="desc">
                 <h1 class="title">About Us</h1>
                 <hr>
-                <p class="text">Platform Edukasi Lingkungan yang membantumu dapat ikut menjaga bumi menjadi lebih baik.
+                <p class="text">Platform Edukasi Lingkungan yang membantumu dapat ikut menjaga bumi menjadi lebih
+                    baik.
                     Kami mengajakmu dengan mulai mempelajari tentang waste management!
                 </p>
                 <a href="#" class="btn btn-primary"> <i class="fas fa-file-alt"></i> Materi</a>
@@ -110,4 +118,4 @@
         </section>
         <!-- End Contact -->
 
-@include('templates.landing-page.footer')
+        @include('templates.landing-page.footer')

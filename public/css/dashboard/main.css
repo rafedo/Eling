@@ -319,17 +319,20 @@ a {
 
 .content-table {
     border-collapse: collapse;
+    width: 100%
     min-width: 400px;
+    white-space: nowrap;
+    display: block;
     /* font-size: 0.9em; */
     border-radius: 5px 5px 0 0;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .content-table thead tr {
     background-color: var(--green);
     text-align: left;
-    font-weight: bold;
+    color: var(--grey);
 }
 
 .content-table th,
@@ -366,7 +369,7 @@ a {
     width: 70%;
     position: relative;
     height: 60px;
-    background: blue;
+    background: #fff;
     overflow: hidden;
 }
 

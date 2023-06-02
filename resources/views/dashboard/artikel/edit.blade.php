@@ -20,6 +20,7 @@
                     @enderror
                 </div>
                 <div class="">
+                    <p style="margin-top: 10px;">Kategori</p>
                     <select class="form__input @error('id_kategori') is-invalid @enderror" 
                         name="id_kategori" id="id_kategori" value="{{ old('id_kategori') }}" required
                         autofocus>
@@ -78,10 +79,11 @@
                     @enderror
                 </div>
                 <div class="">
+                    <p style="margin-top: 20px">Foto</p>
                     <input type="file" class="form__input" accept="image/*" id="foto" name="foto"
                         value="{{ old('foto', $artikel->foto) }}" required autofocus>
                     <label for="foto" class="form__label"><span class="content-label">
-                            Foto</span></label>
+                            </span></label>
                     @error('foto')
                         <p>{{ $message }}</p>
                     @enderror

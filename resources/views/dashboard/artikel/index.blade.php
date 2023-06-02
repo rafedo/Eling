@@ -16,7 +16,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama</th>
-                    <th>ID Kategori</th>
+                    <th>Kategori</th>
                     <th>Deskripsi Singkat</th>
                     <th>Deskripsi Panjang</th>
                     <th>Tanggal</th>

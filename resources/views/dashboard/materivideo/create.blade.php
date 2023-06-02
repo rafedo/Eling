@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div class="container-tambah">
+    <div class="container-tambah">
         <div class="heading">
             <h1>Tambahkan Data Baru</h1>
         </div>
@@ -10,9 +10,8 @@
             <form action="/dashboard/materivideo" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form">
-                    <input type="text" class="form__input @error('nama') is-invalid @enderror"
-                        id="nama" name="nama" value="{{ old('nama') }}" required
-                        autofocus>
+                    <input type="text" class="form__input @error('nama') is-invalid @enderror" id="nama" name="nama"
+                        value="{{ old('nama') }}" required autofocus>
                     <label for="nama" class="form__label"><span class="content-label">
                             Nama</span></label>
                     @error('nama')
@@ -20,9 +19,9 @@
                     @enderror
                 </div>
                 <div class="">
-                    <select class="form__input @error('id_kategori') is-invalid @enderror" 
-                        name="id_kategori" id="id_kategori" value="{{ old('id_kategori') }}" required
-                        autofocus>
+                    <p style="margin-top: 20px;">Kategori</p>
+                    <select class="form__input @error('id_kategori') is-invalid @enderror" name="id_kategori"
+                        id="id_kategori" value="{{ old('id_kategori') }}" required autofocus>
                         <option value="id_kategori">Pilih Kategori</option>
                         @foreach ($kategori as $item)
                             <option value="{{ $item->id }}">{{ $item->jenis_kategori }}</option>
@@ -43,9 +42,8 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input @error('link_video') is-invalid @enderror"
-                        id="link_video" name="link_video" value="{{ old('link_video') }}" required
-                        autofocus>
+                    <input type="text" class="form__input @error('link_video') is-invalid @enderror" id="link_video"
+                        name="link_video" value="{{ old('link_video') }}" required autofocus>
                     <label for="link_video" class="form__label"><span class="content-label">
                             Link Video</span></label>
                     @error('link')
@@ -53,9 +51,8 @@
                     @enderror
                 </div>
                 <div class="form">
-                    <input type="text" class="form__input @error('sumber') is-invalid @enderror"
-                        id="sumber" name="sumber" value="{{ old('sumber') }}" required
-                        autofocus>
+                    <input type="text" class="form__input @error('sumber') is-invalid @enderror" id="sumber"
+                        name="sumber" value="{{ old('sumber') }}" required autofocus>
                     <label for="sumber" class="form__label"><span class="content-label">
                             Sumber</span></label>
                     @error('sumber')
@@ -63,10 +60,11 @@
                     @enderror
                 </div>
                 <div class="">
-                    <input type="file" class="form__input @error('foto') is-invalid @enderror" accept="image/*" id="foto" name="foto"
-                        value="{{ old('foto') }}" required autofocus>
+                    <p style="margin-top: 20px">Foto</p>
+                    <input type="file" class="form__input @error('foto') is-invalid @enderror" accept="image/*"
+                        id="foto" name="foto" value="{{ old('foto') }}" required autofocus>
                     <label for="foto" class="form__label"><span class="content-label">
-                            Foto</span></label>
+                        </span></label>
                     @error('foto')
                         <p>{{ $message }}</p>
                     @enderror

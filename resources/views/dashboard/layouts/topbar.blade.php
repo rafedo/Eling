@@ -10,8 +10,11 @@
         </label>
     </div>
     <!-- userimg -->
-    <div class="user">
+    {{-- <div class="user">
         <img src="/assets/images/title_favicon.png" alt="USER" height="50px" />
-    </div>
 
+    </div> --}}
+    @auth
+        <a href="/logout">Logout</a>
+    @endauth
 </div>

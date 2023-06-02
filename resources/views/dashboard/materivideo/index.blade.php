@@ -11,12 +11,12 @@
     @endif
 
     <a class="btn btn-primary" href="/dashboard/materivideo/create">Tambahkan Data</a>
-    <table class="content-table">
+    <table class="content-table ">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>ID Kategori</th>
+                <th>Kategori</th>
                 <th>Deskripsi Panjang</th>
                 <th>Foto</th>
                 <th>Link Video</th>
