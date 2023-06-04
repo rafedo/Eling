@@ -6,7 +6,6 @@
             <h1>Ubah Data Artikel</h1>
         </div>
 
-        <div class="content-ubah">
             <form action="/dashboard/artikel/{{ $artikel->id }}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
@@ -42,14 +41,11 @@
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form">
-                    <input type="text" class="form__input" id="deskripsi_panjang" name="deskripsi_panjang"
-                        value="{{ old('deskripsi_panjang', $artikel->deskripsi_panjang) }}" required autofocus>
-                    <label for="deskripsi_panjang" class="form__label"><span class="content-label">
-                            Deskripsi Panjang</span></label>
-                    @error('deskripsi_panjang')
-                        <p>{{ $message }}</p>
-                    @enderror
+                <div class="form-trix" style="margin-top: 25px">
+                    <input id="deskripsi_panjang" type="hidden" name="deskripsi_panjang" value="{{ old('deskripsi_panjang', $artikel->deskripsi_panjang) }}">
+                    <label for="deskripsi_panjang">
+                        Deskripsi Panjang</label>
+                    <trix-editor input="deskripsi_panjang"></trix-editor>
                 </div>
                 <div class="form">
                     <input type="text" class="form__input" id="tanggal" name="tanggal"
@@ -88,8 +84,7 @@
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Ubah Materi Video</button>
+                <button type="submit" class="btn btn-primary">Ubah Data</button>
             </form>
-        </div>
     </div>
 @endsection

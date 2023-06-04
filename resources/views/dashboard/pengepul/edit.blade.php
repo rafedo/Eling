@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-ubah">
         <div class="heading">
-            <h1>Ubah Data Materi Video</h1>
+            <h1>Ubah Data Pengepul</h1>
         </div>
 
         <div class="content-ubah">

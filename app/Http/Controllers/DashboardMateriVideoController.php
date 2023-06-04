@@ -38,29 +38,29 @@ class DashboardMateriVideoController extends Controller
      */
     public function store(Request $request)
     {
-            $request->validate([
-                'nama' => 'required|max:255',
-                'deskripsi_panjang' => 'required',
-                'id_kategori' => 'required|max:255',
-                'link_video' => 'required|max:255',
-                'sumber' => 'required|max:255',
-                'foto' => 'required|image'
-            ]);
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi_panjang' => 'required',
+            'id_kategori' => 'required',
+            'link_video' => 'required',
+            'sumber' => 'required',
+            'foto' => 'required|image'
+        ]);
 
-            $imageName = time().'.'.$request->foto->extension();  
-            $request->foto->storeAs('public/materi', $imageName);
+        $imageName = time() . '.' . $request->foto->extension();
+        $request->foto->storeAs('public/materi', $imageName);
 
-            $input = [
-                'nama' => $request->nama,            
-                'deskripsi_panjang' => $request->deskripsi_panjang,
-                'id_kategori' => $request->id_kategori,
-                'link_video' => $request->link_video,
-                'sumber' => $request->sumber,
-                'foto' => $imageName
-            ];
+        $input = [
+            'nama' => $request->nama,
+            'deskripsi_panjang' => $request->deskripsi_panjang,
+            'id_kategori' => $request->id_kategori,
+            'link_video' => $request->link_video,
+            'sumber' => $request->sumber,
+            'foto' => $imageName
+        ];
 
-            Materi::create($input);
-            return redirect('/dashboard/materivideo')->with('berhasil', 'menambahkan data materi video baru!');
+        Materi::create($input);
+        return redirect('/dashboard/materivideo')->with('berhasil', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -68,7 +68,7 @@ class DashboardMateriVideoController extends Controller
      */
     public function edit(Materi $materivideo)
     {
-        $kategori = Kategori::all(); 
+        $kategori = Kategori::all();
         return view('dashboard.materivideo.edit', [
             'materivideo' => $materivideo,
             'kategori' => $kategori
@@ -81,16 +81,16 @@ class DashboardMateriVideoController extends Controller
     public function update(Request $request, Materi $materivideo)
     {
         $rules = [
-            'nama' => 'required|max:255',
+            'nama' => 'required',
             'deskripsi_panjang' => 'required',
-            'id_kategori' => 'required|max:255',
-            'link_video' => 'required|max:255',
-            'sumber' => 'required|max:255',
-            'foto' => 'required'
+            'id_kategori' => 'required',
+            'link_video' => 'required',
+            'sumber' => 'required',
+            'foto' => 'required|image'
         ];
 
         $imageName = $request->validate($rules);
-        $imageName = time().'.'.$request->foto->extension();  
+        $imageName = time() . '.' . $request->foto->extension();
         $request->foto->storeAs('public/materi', $imageName);
 
         $input = [
@@ -104,7 +104,7 @@ class DashboardMateriVideoController extends Controller
 
         Materi::where('id', $materivideo->id)->update($input);
 
-        return redirect('/dashboard/materivideo')->with('berhasil', 'salah satu data telah diupdate! ');
+        return redirect('/dashboard/materivideo')->with('berhasil', 'Salah satu data berhasil diubah! ');
     }
 
     /**
@@ -114,6 +114,6 @@ class DashboardMateriVideoController extends Controller
     {
         Materi::destroy($materivideo->id);
 
-        return redirect('/dashboard/materivideo')->with('berhasil', 'salah satu data telah dihapus! ');
+        return redirect('/dashboard/materivideo')->with('berhasil', 'Salah satu data berhasil dihapus! ');
     }
 }

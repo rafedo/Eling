@@ -36,8 +36,8 @@ class DashboardKategoriController extends Controller
     {
         // dd($request);
         $request->validate([
-            'jenis_kategori' => 'required|max:255',
-            'deskripsi_singkat' => 'required|max:255',
+            'jenis_kategori' => 'required',
+            'deskripsi_singkat' => 'required',
             'deskripsi_panjang' => 'required',
             'foto' => 'required|image'
         ]);
@@ -55,7 +55,7 @@ class DashboardKategoriController extends Controller
 
         Kategori::create($input);
 
-        return redirect('/dashboard/kategori')->with('berhasil', 'menambahkan data materi video baru!');
+        return redirect('/dashboard/kategori')->with('berhasil', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -74,11 +74,10 @@ class DashboardKategoriController extends Controller
     public function update(Request $request, Kategori $kategori)
     {
         $rules = [
-            'jenis_kategori' => 'required|max:255',
-            'deskripsi_singkat' => 'required|max:255',
+            'jenis_kategori' => 'required',
+            'deskripsi_singkat' => 'required',
             'deskripsi_panjang' => 'required',
             'foto' => 'required|image'
-
         ];
 
         $imageName = $request->validate($rules);
@@ -95,7 +94,7 @@ class DashboardKategoriController extends Controller
 
         Kategori::where('id', $kategori->id)->update($input);
 
-        return redirect('/dashboard/kategori')->with('berhasil', 'salah satu data telah diupdate! ');
+        return redirect('/dashboard/kategori')->with('berhasil', 'Salah satu data berhasil diubah! ');
     }
 
     /**
@@ -105,6 +104,6 @@ class DashboardKategoriController extends Controller
     {
         Kategori::destroy($kategori->id);
 
-        return redirect('/dashboard/kategori')->with('berhasil', 'salah satu data telah dihapus! ');
+        return redirect('/dashboard/kategori')->with('berhasil', 'Salah satu data berhasil dihapus! ');
     }
 }

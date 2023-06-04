@@ -53,7 +53,7 @@ class DashboardGaleriController extends Controller
 
         Galeri::create($input);
 
-        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'menambahkan data materi video baru!');
+        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -86,7 +86,7 @@ class DashboardGaleriController extends Controller
 
         Galeri::where('id', $galeri->id)->update($validatedData);
 
-        return redirect('/dashboard/gallery/pengepul/'. $galeri->pengepul_id)->with('berhasil', 'salah satu data telah diupdate! ');
+        return redirect('/dashboard/gallery/pengepul/'. $galeri->pengepul_id)->with('berhasil', 'Salah satu data berhasil diubah! ');
     }
 
     /**
@@ -97,6 +97,6 @@ class DashboardGaleriController extends Controller
         $id = $galeri->pengepul_id;
         Galeri::destroy($galeri->id);
 
-        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'salah satu data telah dihapus! ');
+        return redirect('/dashboard/gallery/pengepul/'. $id)->with('berhasil', 'Salah satu data berhasil dihapus! ');
     }
 }

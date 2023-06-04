@@ -33,12 +33,12 @@
                         <td>{{ $artikel->nama }}</td>
                         <td>{{ $artikel->kategori->jenis_kategori }}</td>
                         <td>{{ $artikel->deskripsi_singkat }}</td>
-                        <td>{{ $artikel->deskripsi_panjang }}</td>
+                        <td>{!! $artikel->deskripsi_panjang !!}</td>
                         <td>{{ $artikel->tanggal }}</td>
                         <td>{{ $artikel->link }}</td>
                         <td>{{ $artikel->sumber }}</td>
                         <td>
-                            <img src="{{ asset('storage/artikel/'. $artikel->foto) }}" style="max-width: 200px">
+                            <img src="{{ asset('storage/artikel/' . $artikel->foto) }}" style="max-width: 200px">
                         </td>
                         <td>
                             <button class="btn-info"><a href="/dashboard/artikel/{{ $artikel->id }}/edit">Ubah</a></button>

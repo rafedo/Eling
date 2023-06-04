@@ -28,7 +28,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kategori->jenis_kategori }}</td>
                         <td>{{ $kategori->deskripsi_singkat }}</td>
-                        <td>{{ $kategori->deskripsi_panjang }}</td>
+                        <td>{!! $kategori->deskripsi_panjang !!}</td>
                         <td>
                             <img src="{{ asset('storage/category/'. $kategori->foto) }}" style="max-width: 200px">
                         </td>

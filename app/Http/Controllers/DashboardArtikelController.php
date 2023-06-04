@@ -36,17 +36,17 @@ class DashboardArtikelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|max:255',
-            'deskripsi_singkat' => 'required|max:255',
+            'nama' => 'required',
+            'deskripsi_singkat' => 'required',
             'deskripsi_panjang' => 'required',
-            'tanggal' => 'required|max:255',
-            'link' => 'required|max:255',
-            'sumber' => 'required|max:255',
+            'tanggal' => 'required',
+            'link' => 'required',
+            'sumber' => 'required',
             'foto' => 'required|image',
-            'id_kategori' => 'required|max:255'
+            'id_kategori' => 'required|max:255',
         ]);
 
-        $imageName = time().'.'.$request->foto->extension();  
+        $imageName = time() . '.' . $request->foto->extension();
         $request->foto->storeAs('public/artikel', $imageName);
 
         $input = [
@@ -58,11 +58,12 @@ class DashboardArtikelController extends Controller
             'sumber' => $request->sumber,
             'foto' => $imageName,
             'id_kategori' => $request->id_kategori
+
         ];
 
         Artikel::create($input);
 
-        return redirect('/dashboard/artikel')->with('berhasil', 'menambahkan data artikel baru!');
+        return redirect('/dashboard/artikel')->with('berhasil', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -70,7 +71,7 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        $kategori = Kategori::all(); 
+        $kategori = Kategori::all();
         return view('dashboard.artikel.edit', [
             'artikel' => $artikel,
             'kategori' => $kategori
@@ -83,18 +84,18 @@ class DashboardArtikelController extends Controller
     public function update(Request $request, Artikel $artikel)
     {
         $rules = [
-            'nama' => 'required|max:255',
-            'deskripsi_singkat' => 'required|max:255',
-            'deskripsi_panjang' => 'required|max:255',
-            'tanggal' => 'required|max:255',
-            'link' => 'required|max:255',
-            'sumber' => 'required|max:255',
+            'nama' => 'required',
+            'deskripsi_singkat' => 'required',
+            'deskripsi_panjang' => 'required',
+            'tanggal' => 'required',
+            'link' => 'required',
+            'sumber' => 'required',
             'foto' => 'required|image',
             'id_kategori' => 'required|max:255',
         ];
 
         $imageName = $request->validate($rules);
-        $imageName = time().'.'.$request->foto->extension();  
+        $imageName = time() . '.' . $request->foto->extension();
         $request->foto->storeAs('public/artikel', $imageName);
 
         $input = [
@@ -110,7 +111,7 @@ class DashboardArtikelController extends Controller
 
         Artikel::where('id', $artikel->id)->update($input);
 
-        return redirect('/dashboard/artikel')->with('berhasil', 'salah satu data telah diupdate! ');
+        return redirect('/dashboard/artikel')->with('berhasil', 'Salah satu data berhasil diubah! ');
     }
 
     /**
@@ -120,6 +121,6 @@ class DashboardArtikelController extends Controller
     {
         Artikel::destroy($artikel->id);
 
-        return redirect('/dashboard/artikel')->with('berhasil', 'salah satu data telah dihapus! ');
+        return redirect('/dashboard/artikel')->with('berhasil', 'Salah satu data berhasil dihapus! ');
     }
 }
