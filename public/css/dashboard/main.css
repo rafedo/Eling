@@ -321,17 +321,17 @@ a {
     border-collapse: collapse;
     display: block;
     white-space: nowrap;
-    min-width: 400px;
-    width: 100%;
     /* font-size: 0.9em; */
     border-radius: 5px 5px 0 0;
     overflow: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+
+
 .content-table thead tr {
     background-color: var(--green);
-    text-align: left;
+    text-align: center;
     color: var(--grey);
 }
 
